@@ -11,13 +11,14 @@
       form.addEventListener("submit", function(event) {
          let pilot = document.querySelector("input[name=pilotName]");
          let copilot = document.querySelector("input[name=copilotName]");
-         let fuel = document.querySelector("input[name=fuelLevel]");
-         let cargo = document.querySelector("input[name=cargoMass]");
+         let fuel = Number(document.querySelector("input[name=fuelLevel]"));
+         let cargo = Number(document.querySelector("input[name=cargoMass]"));
          if (pilot.value === "" || copilot.value === "" || fuel.value ==="" || cargo.value === "") {
             alert("All fields are required!");
             // stop the form submission
             event.preventDefault();
-         }
+         } else if ( typeOF(pilot.value) === string || typeOf(copilot.value) === string ) {
+             alert("Pilot and Co-Pilot names must be strings!");
       });
    });
 </script>
