@@ -19,11 +19,17 @@
             event.preventDefault();
          } else if ( typeOF(pilot.value) === string || typeOf(copilot.value) === string ) {
              alert("Pilot and Co-Pilot names must be strings!");
-        } else if (fuel.value < 10000) { window.onload = function(){
+        } else if (fuel.value < 10000) { 
+            document.getElementById('faultyItems').style.visibility='visible';
+            window.onload = function(){
  document.getElementById("fuelStatus").innerHTML = "not enough fuel for the journey";
-}
-
-        } 
+            } 
+        } else if (cargo.value > 10000 ) {
+            document.getElementById('faultyItems').style.visibility='visible';
+            window.onload = function(){
+ document.getElementById("cargoStatus").innerHTML = "too much mass for the shuttle to take off";
+            } 
+        }
     });
    });
 </script>
