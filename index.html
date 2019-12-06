@@ -22,12 +22,14 @@
         } else if (fuel.value < 10000) { 
             document.getElementById('faultyItems').style.visibility='visible';
             window.onload = function(){
- document.getElementById("fuelStatus").innerHTML = "not enough fuel for the journey";
+ document.getElementById("fuelStatus").innerHTML = "not enough fuel for the journey"
+ document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
             } 
         } else if (cargo.value > 10000 ) {
             document.getElementById('faultyItems').style.visibility='visible';
             window.onload = function(){
  document.getElementById("cargoStatus").innerHTML = "too much mass for the shuttle to take off";
+ document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
             } 
         }
     });
