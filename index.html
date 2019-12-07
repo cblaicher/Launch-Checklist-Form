@@ -18,7 +18,8 @@
             // stop the form submission
             event.preventDefault();
          } else if ( typeOF(pilot.value) === string || typeOf(copilot.value) === string ) {
-             alert("Pilot and Co-Pilot names must be strings!");
+             alert("Invalid information entered, please try again.");
+             event.preventDefault();
         } else if (fuel.value < 10000) { 
             document.getElementById("faultyItems").style.visibility='visible';
             document.getElementById("launchStatus").style.color = 'red';
