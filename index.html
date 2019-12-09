@@ -38,6 +38,26 @@
     });
    });
 </script>
+<script>
+         window.addEventListener("load", function() {
+            fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+               response.json().then( function(json) {
+                  const div = document.getElementById("missionTarget");
+                  // Add HTML that includes the JSON data
+                  div.innerHTML = `
+                     <ol>
+                        <li>Name: ${json.name}</li>
+                        <li>Diameter: ${json.diameter}</li>
+                        <li>Star: ${json.star}</li>
+                        <li>Distance from Earth: ${json.distance}</li>
+                        <li>Number of Moons: ${json.moons}</li>
+                     </ol>
+<img src="${json.image}">
+                  `;
+               });
+            });
+         });
+</script>
     <body>
         <h1>Launch Checklist Form</h1>
         <div id="missionTarget">
