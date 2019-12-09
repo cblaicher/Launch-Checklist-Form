@@ -8,20 +8,67 @@
     <script>
    window.addEventListener("load", function() {
       let form = document.querySelector("form");
-      form.addEventListener("formSubmit", function(event) {
-         let pilot = document.querySelector("input[name=pilotName]");
-         let copilot = document.querySelector("input[name=copilotName]");
-         let fuel = Number(document.querySelector("input[name=fuelLevel]"));
-         let cargo = Number(document.querySelector("input[name=cargoMass]"));
-         if (pilot.value === "" || copilot.value === "" || fuel.value ==="" || cargo.value === "") {
-            alert("All fields are required!");
-            // stop the form submission
-            event.preventDefault();
-         } else if ( typeOF(pilot.value) != string || typeOf(copilot.value) != string ) {
-             alert("Invalid information entered, please try again.");
-	     //stop the form submission
-             event.preventDefault();
-        } else if (fuel.value < 10000) { 
+
+      form.addEventListener("submit", function(event) {
+	event.preventDefault();
+	event.stopPropagation();
+        let pilot = document.querySelector("input[name=pilotName]").value;
+        let copilot = document.querySelector("input[name=copilotName]").value;
+        let fuel = Number(document.querySelector("input[name=fuelLevel]")).value;
+        let cargo = Number(document.querySelector("input[name=cargoMass]")).value;
+
+	let faultyItems = document.getElementById('faultyItems');
+	let launchStatus = document.getElementById('launchStatus');
+	let fuelStatus = document.getElementById('fuelStatus');
+	let cargoStatus = document.getElementById('cargoStatus')
+	let launchReady = true
+
+         if (pilot === "" || copilot === "" || fuel ==="" || cargo === "" || isNaN(fuelLevel) || cargo ==="" || isNaN(cargo)  ) {
+         alert("All fields are required!");
+	
+//Style Stuff
+	faultItems.style.visability = 'hidden';
+	launchStatus.style.color = 'black'
+	launchStatus.innerHTML = 'Awaiting Information Before Launch';
+	
+       } 
+	else  {
+	faultItems.style.visability = 'visible';
+
+document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilotName + ' ' }Ready`
+document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + ' ' }Ready`
+
+
+        	if (fuel.value < 10000) { 
+		ready = false;
+		fuelStatus.innerHTML = "Not enough fuel for launch!" ; 
+		
+		} else { 
+		fuelStatus.innerHTML = "Fuel level high enough for launch";
+		}
+		
+		if (cargo > 10000) {
+		ready = false;
+		cargoStatus.innerHTML = "Cargo mass low enough for launch";
+		}
+
+		if (ready) { 
+		launchStatus.style.color = 'green'
+		launchStatus.innerHTML = 'Shuttle is ready for launch';
+		retrieveData();
+		} 
+
+		else { 
+		items.style.visability = 'visiblity';
+		launchStatus.style.color = 'red';
+		launchStatus.innerHTML = 'Shuttle not ready for launch';
+		}
+		}
+	});
+});	
+				
+
+
             document.getElementById("faultyItems").style.visibility='visible';
             document.getElementById("launchStatus").style.color = 'red';
             window.onload = function(){
@@ -86,10 +133,10 @@
             <h2 id="launchStatus">Awaiting Information Before Launch</h2>
             <div  id="faultyItems">
                 <ol>
-                    <li id="pilotStatus">`${pilot} Pilot Ready`</li>
-                    <li id="copilotStatus">`${copilot} Co-pilot Ready`</li>
-                    <li id="fuelStatus">Fuel level high enough for launch</li>
-                    <li id="cargoStatus">Cargo mass low enough for launch</li>
+                    <li id="pilotStatus"></li>
+                    <li id="copilotStatus"></li>
+                    <li id="fuelStatus"></li>
+                    <li id="cargoStatus"></li>
                 </ol>
             </div>
         </div>    
