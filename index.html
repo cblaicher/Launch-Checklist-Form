@@ -42,10 +42,10 @@
          window.addEventListener("load", function() {
             fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
                response.json().then( function(json) {
-                  let data = json(2)
-                  const div = document.getElementById("missionTarget");
+                  let data = json[2]
+                  const divMission = document.getElementById("missionTarget");
                   // Add HTML that includes the JSON data
-                  div.innerHTML = `
+                  divMission.innerHTML = `
                      <ol>
                         <li>Name: ${data.name}</li>
                         <li>Diameter: ${data.diameter}</li>
@@ -53,7 +53,7 @@
                         <li>Distance from Earth: ${data.distance}</li>
                         <li>Number of Moons: ${data.moons}</li>
                      </ol>
-<img src="${json.image}">
+		<img src="${data.image}">
                   `;
                });
             });
