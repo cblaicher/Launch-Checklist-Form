@@ -41,7 +41,7 @@
 <script>
          window.addEventListener("load", function() {
             fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-               response.json(2).then( function(json) {
+               response.json().then( function(json) {
                   const div = document.getElementById("missionTarget");
                   // Add HTML that includes the JSON data
                   div.innerHTML = `
