@@ -34,9 +34,9 @@
 	faultyItems.style.color = 'black';
 	document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilot } Ready`
 	document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilot } Ready`
-        	if (fuel.value <= 10000) { 
+        	if (fuel < 10000) { 
 		launchReady = false;
-		fuelStatus.innerHTML = "not enough fuel for the journey!" ; 
+		fuelStatus.innerHTML = "Not enough fuel for the journey!" ; 
 		
 		} else { 
 		fuelStatus.innerHTML = "Fuel level high enough for take off";
