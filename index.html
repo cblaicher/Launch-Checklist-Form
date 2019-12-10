@@ -40,7 +40,7 @@
 
 
         	if (fuel.value < 10000) { 
-		ready = false;
+		launchReady = false;
 		fuelStatus.innerHTML = "not enough fuel for the journey!" ; 
 		
 		} else { 
@@ -48,11 +48,11 @@
 		}
 		
 		if (cargo > 10000) {
-		ready = false;
+		launchReady = false;
 		cargoStatus.innerHTML = "Cargo mass too high for launch";
 		}
 
-		if (ready) { 
+		if (launchReady) { 
 		launchStatus.style.color = 'green'
 		launchStatus.innerHTML = 'Shuttle is ready for launch';
 		} 
