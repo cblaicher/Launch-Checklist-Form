@@ -8,7 +8,6 @@
     <script>
    window.addEventListener("load", function() {
       let form = document.querySelector("form");
-
       form.addEventListener("submit", function(event) {
 	event.preventDefault();
 	event.stopPropagation();
@@ -16,30 +15,26 @@
         let copilot = document.querySelector("input[name=copilotName]").value;
         let fuel = document.querySelector("input[name=fuelLevel]").value;
         let cargo = document.querySelector("input[name=cargoMass]").value;
-
 	let faultyItems = document.getElementById('faultyItems');
 	let launchStatus = document.getElementById('launchStatus');
 	let fuelStatus = document.getElementById('fuelStatus');
 	let cargoStatus = document.getElementById('cargoStatus')
 	let launchReady = true
-
          if (pilot === "" || copilot === "" || fuel ==="" || cargo === "" || isNaN(fuel) || cargo ==="" || isNaN(cargo)  ) {
          alert("All fields are required!");
 	
 //Style Stuff
-	faultyItems.style.visability = 'hidden';
-	launchStatus.style.color = 'black'
+	faultyItems.style.visibility = 'hidden';
+	launchStatus.style.color = 'black';
 	launchStatus.innerHTML = 'Awaiting Information Before Launch';
 	
        } 
 	else  {
-	faultyItems.style.visability = 'visible';
-
+	faultyItems.style.visibility = 'visible';
+	faultyItems.style.color = 'black';
 	document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilot } Ready`
 	document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilot } Ready`
-
-
-        	if (fuel.value < 10000) { 
+        	if (fuel.value <= 10000) { 
 		launchReady = false;
 		fuelStatus.innerHTML = "not enough fuel for the journey!" ; 
 		
@@ -49,16 +44,17 @@
 		
 		if (cargo > 10000) {
 		launchReady = false;
-		cargoStatus.innerHTML = "Cargo mass too high for launch";
+		cargoStatus.innerHTML = "Cargo weight too high for launch";
 		}
 
 		if (launchReady) { 
+		faultyItems.style.visibility = 'visible'
+		cargoStatus.innerHTML = "Cargo weight acceptable for launch";
 		launchStatus.style.color = 'green'
 		launchStatus.innerHTML = 'Shuttle is ready for launch';
-		} 
-
-		else { 
-		faultyItems.style.visability = 'visiblity';
+		
+		} else { 
+		faultyItems.style.visibility = 'visible';
 		launchStatus.style.color = 'red';
 		launchStatus.innerHTML = 'Shuttle not ready for launch';
 		}
