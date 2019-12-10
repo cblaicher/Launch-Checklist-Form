@@ -14,8 +14,8 @@
 	event.stopPropagation();
         let pilot = document.querySelector("input[name=pilotName]").value;
         let copilot = document.querySelector("input[name=copilotName]").value;
-        let fuel = Number(document.querySelector("input[name=fuelLevel]")).value;
-        let cargo = Number(document.querySelector("input[name=cargoMass]")).value;
+        let fuel = document.querySelector("input[name=fuelLevel]").value;
+        let cargo = document.querySelector("input[name=cargoMass]").value;
 
 	let faultyItems = document.getElementById('faultyItems');
 	let launchStatus = document.getElementById('launchStatus');
