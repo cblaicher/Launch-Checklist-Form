@@ -35,8 +35,8 @@
 	else  {
 	faultItems.style.visability = 'visible';
 
-document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilotName + ' ' }Ready`
-document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + ' ' }Ready`
+	document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilotName } Ready`
+	document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName } Ready`
 
 
         	if (fuel.value < 10000) { 
@@ -44,12 +44,12 @@ document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + 
 		fuelStatus.innerHTML = "Not enough fuel for launch!" ; 
 		
 		} else { 
-		fuelStatus.innerHTML = "Fuel level high enough for launch";
+		fuelStatus.innerHTML = "not enough fuel for the journey";
 		}
 		
 		if (cargo > 10000) {
 		ready = false;
-		cargoStatus.innerHTML = "Cargo mass low enough for launch";
+		cargoStatus.innerHTML = "Cargo mass too high for launch";
 		}
 
 		if (ready) { 
@@ -58,7 +58,7 @@ document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + 
 		} 
 
 		else { 
-		items.style.visability = 'visiblity';
+		faultItems.style.visability = 'visiblity';
 		launchStatus.style.color = 'red';
 		launchStatus.innerHTML = 'Shuttle not ready for launch';
 		}
@@ -66,24 +66,6 @@ document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + 
 	});
 });	
 				
-
-
-            document.getElementById("faultyItems").style.visibility='visible';
-            document.getElementById("launchStatus").style.color = 'red';
-            window.onload = function(){
- document.getElementById("fuelStatus").innerHTML = "not enough fuel for the journey"
- document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-            } 
-        } else if (cargo.value > 10000 ) {
-            document.getElementById("faultyItems").style.visibility='visible';
-            document.getElementById("launchStatus").style.color = 'red';
-            window.onload = function(){
- document.getElementById("cargoStatus").innerHTML = "too much mass for the shuttle to take off";
- document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
-            } 
-        }
-    });
-   });
 </script>
 <script>
          window.addEventListener("load", function() {
