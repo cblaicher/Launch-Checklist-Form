@@ -20,15 +20,23 @@
 	let fuelStatus = document.getElementById('fuelStatus');
 	let cargoStatus = document.getElementById('cargoStatus')
 	let launchReady = true
-         if (pilot === "" || copilot === "" || fuel ==="" || cargo === "" || isNaN(fuel) || cargo ==="" || isNaN(cargo)  ) {
+         if (pilot === "" || copilot === "" || fuel ==="" || cargo === "" || cargo ===""  ) {
          alert("All fields are required!");
 	
 //Style Stuff
 	faultyItems.style.visibility = 'hidden';
 	launchStatus.style.color = 'black';
 	launchStatus.innerHTML = 'Awaiting Information Before Launch';
+       }
 	
-       } 
+	if ( isNaN(fuel) || isNaN(cargo) || pilot !== String ||  copilot !== String ) {
+	alert("Invalid data entered, please try again.")
+
+	faultyItems.style.visibility = 'hidden';
+	launchStatus.style.color = 'black';
+	launchStatus.innerHTML = 'Awaiting Information Before Launch';
+	}
+
 	else  {
 	faultyItems.style.visibility = 'visible';
 	faultyItems.style.color = 'black';
@@ -46,7 +54,6 @@
 		launchReady = false;
 		cargoStatus.innerHTML = "Cargo weight too high for launch";
 		}
-
 		if (launchReady) { 
 		faultyItems.style.visibility = 'visible'
 		cargoStatus.innerHTML = "Cargo weight acceptable for launch";
