@@ -27,13 +27,13 @@
          alert("All fields are required!");
 	
 //Style Stuff
-	faultItems.style.visability = 'hidden';
+	faultyItems.style.visability = 'hidden';
 	launchStatus.style.color = 'black'
 	launchStatus.innerHTML = 'Awaiting Information Before Launch';
 	
        } 
 	else  {
-	faultItems.style.visability = 'visible';
+	faultyItems.style.visability = 'visible';
 
 	document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilotName } Ready`
 	document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName } Ready`
@@ -58,7 +58,7 @@
 		} 
 
 		else { 
-		faultItems.style.visability = 'visiblity';
+		faultyItems.style.visability = 'visiblity';
 		launchStatus.style.color = 'red';
 		launchStatus.innerHTML = 'Shuttle not ready for launch';
 		}
